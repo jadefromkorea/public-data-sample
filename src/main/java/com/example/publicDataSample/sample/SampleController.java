@@ -1,8 +1,12 @@
 package com.example.publicDataSample.sample;
 
+import com.example.publicDataSample.vo.realEatate.RealEstateInfoVo;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONObject;
+import org.json.XML;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,6 +17,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -56,9 +61,20 @@ public class SampleController {
         rd.close();
         conn.disconnect();
 
+        JSONObject jsonObject = XML.toJSONObject(sb.toString());
+
+        // xml -> 자바 객체
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, Object> map = objectMapper.readValue(jsonObject.toString(), Map.class);
+
 //        System.out.println(sb.toString());
 
-        return sb.toString();
+        return map.toString();
+//        return jsonObject.toString();
+//        return sb.toString();
+//        return new Gson().toJson(sb);
+//        return new GsonBuilder().create().toJson(sb);
     }
 
 
