@@ -3,6 +3,8 @@ package com.example.publicDataSample.vo.Stock;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class StockPriceInfo {
@@ -10,9 +12,9 @@ public class StockPriceInfo {
     private String numOfRows;
 
     /** 현재 조회된 데이터의 페이지 번호 */
-    private String pageNum;
+    private String pageNo;
 
-    private StockItemVo stockItem;
+    private StockItems items;
 
     /** 전체 데이터의 총 수 */
     private String totalCount;
