@@ -1,8 +1,6 @@
 package com.example.publicDataSample.sample;
 
 import com.example.publicDataSample.vo.Stock.StockInfo;
-import com.example.publicDataSample.vo.Stock.StockPriceInfo;
-import com.example.publicDataSample.vo.realEatate.RealEstateInfoVo;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
@@ -157,5 +155,11 @@ public class SampleController {
         return stockInfo;
     }
 
+
+    @GetMapping("/mapSample")
+    public String mapSample() {
+        log.info(">>>>> mapSample <<<<<<");
+        return "mapSample";
+    }
 
 }
